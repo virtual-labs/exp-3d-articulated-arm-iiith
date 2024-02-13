@@ -1,0 +1,30 @@
+
+/home/runner/work/exp-3d-articulated-arm-iiith/exp-3d-articulated-arm-iiith/experiment/simulation/js/mech_arm.js
+  5:102  warning  'palm_pos' is defined but never used  no-unused-vars
+
+/home/runner/work/exp-3d-articulated-arm-iiith/exp-3d-articulated-arm-iiith/experiment/simulation/js/shapes.js
+  24:15  warning  'geometry' is assigned a value but never used  no-unused-vars
+
+/home/runner/work/exp-3d-articulated-arm-iiith/exp-3d-articulated-arm-iiith/experiment/simulation/main.js
+    9:7   warning  'modalbutton1' is assigned a value but never used   no-unused-vars
+   16:5   warning  'cam_target' is assigned a value but never used     no-unused-vars
+   17:5   warning  'modalAdd' is assigned a value but never used       no-unused-vars
+   19:5   warning  'initialPos' is assigned a value but never used     no-unused-vars
+   36:1   warning  'shoulder' is not defined                           no-undef
+   40:1   warning  'elbow' is not defined                              no-undef
+   44:1   warning  'wrist' is not defined                              no-undef
+  146:5   warning  'buttons' is assigned a value but never used        no-unused-vars
+  176:5   warning  'raycaster1' is assigned a value but never used     no-unused-vars
+  182:5   warning  'pIntersect' is assigned a value but never used     no-unused-vars
+  185:5   warning  'dragObject' is assigned a value but never used     no-unused-vars
+  190:5   warning  'noOfShapes' is assigned a value but never used     no-unused-vars
+  287:13  warning  Unexpected lexical declaration in case block        no-case-declarations
+  288:13  warning  Unexpected lexical declaration in case block        no-case-declarations
+  289:13  warning  Unexpected lexical declaration in case block        no-case-declarations
+  297:13  warning  Unexpected lexical declaration in case block        no-case-declarations
+  387:11  warning  'gridHelper' is assigned a value but never used     no-unused-vars
+  388:11  warning  'count' is assigned a value but never used          no-unused-vars
+  407:9   warning  'PointGeometry' is assigned a value but never used  no-unused-vars
+
+✖ 21 problems (0 errors, 21 warnings)
+
