@@ -10,12 +10,13 @@
 </head>
 
 <body class="page" style="margin: 1rem;">
-    <section class="columns is-centered is-flex column">
-        <div class="v-collapsible-instruction-container">
-            <div class="v-collapsible">Instructions</div>
-            <div id="procedure-message" class="v-content">
+<div class="columns is-centered column">
+    <div class="v-collapsible-instruction-container v-instruction-container">
+      <div id="instruction-title" class="v-collapsible is-size-5">Instructions</div>
+      <div id="procedure-message" class="v-content" style="text-align: left; padding-left: 10%; padding-right: 10%;">
+        <ul style="list-style: disc;">
                 <li class="instr-font">
-                    The given model consists of 6 parts:
+                    The given model consists of 6 parts:<br>
                     a. Shoulder <br>
                     b. Arm <br>
                     c. Elbow <br>
@@ -66,9 +67,10 @@
                     Enabling the Lock Vertices option allows you to translate the whole simulation on left-clicking and
                     dragging the cursor.
                 </li>
+        </ul>
             </div>
         </div>
-    </section>
+    </div>
 
     <div class="columns is-centered is-variable is-1-mobile is-flex is-flex-wrap-wrap workspace">
         <div id="left" class="column has-text-centered is-2-desktop is-5-tablet is-10-mobile apparatus">
