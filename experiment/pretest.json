@@ -1,0 +1,53 @@
+[
+  {
+    "question": "1. What is hierarchical modeling primarily used for in computer graphics?",
+    "answers": {
+      "a": "To simplify complex shapes into manageable components",
+      "b": "To add color and texture to 3D models",
+      "c": "To enhance lighting effects in virtual environments",
+      "d": "To reduce the size of 3D models for faster rendering"
+    },
+    "correctAnswer": "a",
+    "explanations": {
+      "a": "Correct! Hierarchical modeling helps break down complex shapes into smaller, manageable components.",
+      "b": "Adding color and texture is part of rendering and texturing, not the primary purpose of hierarchical modeling.",
+      "c": "Enhancing lighting effects is achieved through shaders and lighting models, not hierarchical modeling.",
+      "d": "Reducing model size for faster rendering can be achieved through optimization techniques, not hierarchical modeling."
+    },
+    "difficulty": "intermediate"
+  },
+  {
+    "question": "2. How does hierarchical modeling contribute to animation in computer graphics?",
+    "answers": {
+      "a": "By simplifying the rendering pipeline",
+      "b": "By enabling complex movements and transformations of 3D objects",
+      "c": "By reducing the number of polygons in a 3D model",
+      "d": "By adding shadows and reflections to virtual scenes"
+    },
+    "correctAnswer": "b",
+    "explanations": {
+      "a": "Hierarchical modeling focuses on structure and organization, not directly on the rendering pipeline.",
+      "b": "Correct! Hierarchical modeling allows for complex movements and transformations by organizing 3D objects into a hierarchy.",
+      "c": "Reducing polygons relates to mesh simplification, not hierarchical modeling.",
+      "d": "Shadows and reflections are part of lighting and rendering effects, not hierarchical modeling."
+    },
+    "difficulty": "advanced"
+  },
+  {
+    "question": "3. Which statement best describes the relationship between parent and child objects in hierarchical modeling?",
+    "answers": {
+      "a": "Child objects control the transformation of parent objects.",
+      "b": "Parent objects control the visibility of child objects.",
+      "c": "Child objects inherit transformations from parent objects.",
+      "d": "Parent objects inherit textures from child objects."
+    },
+    "correctAnswer": "c",
+    "explanations": {
+      "a": "Parent objects typically control the transformations of child objects, not the other way around.",
+      "b": "Visibility control is usually managed through visibility flags or shaders, not hierarchical relationships.",
+      "c": "Correct! Child objects inherit transformations such as position, rotation, and scale from their parent objects.",
+      "d": "Textures are applied independently to objects and are not inherited within hierarchical relationships."
+    },
+    "difficulty": "intermediate"
+  }
+]

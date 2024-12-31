@@ -2,32 +2,33 @@
     overflow: hidden;
 } 
 
+
 .smol-font {
-   font-size: x-small; 
+   font-size: x-medium; 
 }
 
 .v-datalist-container {
-    height: 100%;
+    height: 93%;
     padding: 0;
 }
 
+
+
 .v-instruction-container {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
-    border:.2rem solid #97d23d;
-    justify-content: flex-start;
 }
 
 .v-canvas-container {
     width: 100%;
     height: 100%;
-    min-height: 900px;
+    /* min-height: 150px; */
     border: none;
 }
 
 .v-slider-full {
     width: 80%;
-    margin: auto;
+	margin: auto;
 }
 
 .input-form {
@@ -51,7 +52,34 @@
     order: 3;
 }
 
+
+/* .exp {
+    position: relative;
+} */
+
+/* Remove large negative margin */
+.slider-container {
+    position: relative;
+     display: flex; /*Flex layout for the container*/ 
+    margin-top: -11vh;
+}
+
+.centered-slider {
+    width: 100%; /* Ensure slider takes up full width */
+}
+
+
+
+
 @media screen and (max-width: 800px) {
+     .v-canvas-container {
+        width: 100%;
+        height: 650px; /* Set a minimum height for mobile */
+        /* min-height: 100px; */
+    }
+    .slider-container {
+        margin-top: -60px;
+    }
     .left {
         order: 1;
         
@@ -66,9 +94,42 @@
     }
 }
 
+/* Extra styles for desktop */
+/* Extra styles for desktop */
+@media (min-width: 1024px) {
+  #left.apparatus {
+    width: 18vw; /* Adjusting width using viewport width */
+    height: 90vh; /* Adjusting height using viewport height */
+    border-radius: 16px; /* Rounded corners for a modern look */
+    overflow-y: auto; /* Scrollbar for overflow content */
+    /* Any additional styles can be added here */
+  }
+ #observations.right {
+    width: 18vw; /* Adjusting width using viewport width */
+    height: 90vh; /* Adjusting height using viewport height */
+    border-radius: 16px; /* Rounded corners for a modern look */
+    overflow-y: auto; /* Scrollbar for overflow content */
+    /* Any additional styles can be added here */
+  }
+}
+
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.canvas-container {
+    width: 100%;
+    height: auto;
+    max-width: 800px;
+    margin-bottom: 20px;
+}
+
 #top-border {
-    border-top: 1px solid black;
-    margin: 0.5rem;
+    border-top: 2px solid black;
+    margin-right: 0%;
 }
 
 .smol-wid {
@@ -125,33 +186,28 @@
     margin: auto;
 }
 
-.slidecontainer {
-    width: 80%;
-}
-
-.slider {
-    -webkit-appearance: none;
-    width: 60%;
-    margin-left: 20%;
-    margin-right: 20%;
-    height: 25px;
-    background: #d3d3d3;
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-}
-
 
 .v-datalist-title {
     border-bottom: 0;
+    /* margin-top: 1px; */
 }
 
-.v-collapsible-instruction-container {
-    width: 60%;
-    margin: auto;
-    border-radius: 0.25rem;
+
+.v-datalist-title-shapes {
+    /* font-family: 'Arial', sans-serif; */
+    font-weight: bold;
+    font-size: 22px; /* Larger font size */
+    color: #000000; /* Solid black */
+    margin-top: -10px; /* Space below */
 }
+
+
+.v-collapsible-instruction-container {
+    width: 65%;
+    margin: auto;
+    border-radius: 0.5rem;
+}
+
 
 .v-collapsible {
     width: 98%;
@@ -165,11 +221,13 @@
 .v-button {
     background-color: #04AA6D;
     border-radius: 0.5rem;
-    font-size: small;
+    font-size: medium;
+    margin: 1rem;
 }
 
 .instr-font {
-    font-size: 0.9rem;
+    font-size: 1rem;
+    color: #000;
 }
 
 .coord-dim {
@@ -220,4 +278,178 @@
 #lock-v #xy-grid #xz-grid #yz-grid {
     margin: auto 0.1rem;
     padding: auto 0.1rem;
+}
+
+.fields {
+	width: 50%;
+}
+
+.field-div {
+    padding-top: 10px;
+	margin: 2px;
+}
+
+
+/* Style for the entire shape list *//* Container for the shape list */
+.shape-list-container {
+  font-family: 'Arial', sans-serif;
+  margin-top: 10px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  height: 60vh; /* Set a fixed height, adjust as needed */
+  overflow-x: auto; /* Allows horizontal scrolling if the list overflows */
+}
+
+/* Title for the shape list */
+.v-datalist-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #2c3e50;
+}
+
+.v-datalist-title-experiment{
+    font-size: 20px;
+  font-weight: bold;
+  margin-top: 100px;
+  text-align: center;
+  color: #2c3e50;
+}
+
+
+#procedure-message {
+    display: none;
+    position: fixed;
+    max-width: 100vw; /* Full width */
+    max-height: 90vh; /* Prevent overflow */
+    overflow-y: auto; /* Scroll if content exceeds height */
+    background: linear-gradient(135deg, #f0f4f8, #d6e1e7); /* Gradient background */
+    z-index: 1000;
+    padding: 35px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* Deeper shadow for more depth */
+    border-radius: 16px; /* Rounded corners for a smoother look */
+    text-align: left;
+    top: 48%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%);
+    animation: fadeIn 0.5s ease-out; /* Fade-in animation */
+    border: 2px solid #3498db; /* Border with a light blue color */
+}
+
+/* Add a subtle fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Optional: add hover effect */
+#procedure-message:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+    transform: translate(-50%, -50%) scale(1.05); /* Slight zoom effect */
+}
+
+
+
+
+#observations.column.has-text-centered {
+
+  overflow-y: auto; /* Enable scrollbar if content overflows */
+}
+
+
+#apply-scaling-btn {
+    background: linear-gradient(to right, #2196F3, #1976D2); /* Blue gradient */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding */
+    border: none; /* Remove border */
+    cursor: pointer; /* Cursor style */
+    border-radius: 5px; /* Rounded corners */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Display as block */
+    font-size: 16px; /* Font size */
+    transition-duration: 0.4s; /* Smooth transition */
+}
+
+/* Hover effect */
+#apply-scaling-btn:hover {
+    background: linear-gradient(to right, #1976D2, #0D47A1); /* Darker blue gradient */
+    color: white; /* White text */
+}
+
+
+#apply-translation-btn {
+    background: linear-gradient(to right, #2196F3, #1976D2); /* Blue gradient */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding */
+    border: none; /* Remove border */
+    cursor: pointer; /* Cursor style */
+    border-radius: 5px; /* Rounded corners */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Display as block */
+    font-size: 16px; /* Font size */
+    transition-duration: 0.4s; /* Smooth transition */
+}
+
+/* Hover effect */
+#apply-translation-btn:hover {
+    background: linear-gradient(to right, #1976D2, #0D47A1); /* Darker blue gradient */
+    color: white; /* White text */
+}
+
+#set-rotation-axis {
+    background: linear-gradient(to right, #2196F3, #1976D2); /* Blue gradient */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding */
+    border: none; /* Remove border */
+    cursor: pointer; /* Cursor style */
+    border-radius: 5px; /* Rounded corners */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Display as block */
+    font-size: 16px; /* Font size */
+    transition-duration: 0.4s; /* Smooth transition */
+}
+
+/* Hover effect */
+#set-rotation-axis:hover {
+    color: white; /* White text */
+}
+
+
+.v-datalist-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.v-datalist-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.v-datalist-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.v-datalist-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.v-datalist-container {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+}
+
+#left.column.has-text-centered {
+
+  overflow-y: auto; /* Enable scrollbar if content overflows */
 }
