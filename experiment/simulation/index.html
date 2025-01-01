@@ -64,7 +64,15 @@
                     <strong style="font-size: 19px;">🛠️Translation Vector</strong>: Defines how much to move the shape
                     along the <strong>X</strong>,
                     <strong>Y</strong>, and <strong>Z</strong> axes in 3D space.
+                    <ul style="list-style-type: disc; padding-left: 20px;">
+                        <li>
+                            <strong style="color:#1976D2">Apply Translation:</strong> Click to apply the specified
+                            translation factors to
+                            the current
+                            shapes.
 
+                        </li>
+                    </ul>
                 </li>
 
 
@@ -80,57 +88,86 @@
                     <strong style="font-size: 19px;">🔍 Transformation Matrix</strong>:
                     <ul style="list-style-type: disc; padding-left: 20px;">
                         <li>Monitor the values of the transformation matrix while adjusting the slider.</li>
-                        <li>The transformation matrix multiplies the point’s homogeneous coordinates, resulting in new coordinates for
+                        <li>The transformation matrix multiplies the point’s homogeneous coordinates, resulting in new
+                            coordinates for
                             the translation effect.</li>
+                        <li>Note: This transformation matrix exclusively represents translation and does not include any
+                            rotation
+                            factors.</li>
                     </ul>
                 </li>
 
-            <li class="instr-font">
-                <strong style="font-size: 19px;">🔍 Model Hierarchy and Transformation Instructions</strong>:
-                <ul style="list-style-type: disc; padding-left: 20px;">
-                    <li><strong>Model Parts and Colors:</strong></li>
-                    <ul style="list-style-type: circle; padding-left: 20px;">
-                        <li><span style="color: blue;">Blue</span>: Represents the Shoulder. This is the highest level (Level 1) of
-                            the model hierarchy.</li>
-                        <li><span style="color: rgb(199, 140, 31);">Orange</span>: Represents the Arm, which is a child of the Shoulder.</li>
-                        <li><span style="color: rgb(244, 14, 140);">Pink</span>: Represents the Elbow, also a child of the Shoulder.</li>
-                        <li><span style="color: rgb(8, 76, 8);">Green</span>: Represents the Fore-arm, a child of the Elbow.</li>
-                        <li><span style="color: rgb(182, 22, 22);">Brown</span>: Represents the Wrist, another child of the Elbow.</li>
-                        <li><span style="color: rgb(10, 152, 152);">Cyan</span>: Represents the Palm, which is a child of the Wrist.</li>
-                    </ul>
-                    <li><strong>Hierarchical Structure:</strong></li>
-                    <ul style="list-style-type: circle; padding-left: 20px;">
-                        <li><strong>Level 1 (Shoulder):</strong> This level contains the Arm and Elbow.</li>
-                        <li><strong>Level 2 (Elbow):</strong> Contains the Fore-arm and Wrist.</li>
-                        <li><strong>Level 3 (Wrist):</strong> Contains the Palm.</li>
-                    </ul>
-                    <li><strong>Transformation and Animation:</strong></li>
-                    <ul style="list-style-type: circle; padding-left: 20px;">
-                        <li>When adjusting sliders:</li>
-                        <ul style="list-style-type: disc; padding-left: 20px;">
-                            <li>Slider for <span style="color: blue;">Shoulder (Level 1)</span> affects all parts of the model
-                                (Levels 1, 2, and 3). Any transformation applied here cascades down to all child elements.</li>
-                            <li>Slider for <span style="color: rgb(238, 18, 205);">Elbow (Level 2)</span> affects Level 2 and Level 3 parts.
-                                Transformations here affect the Fore-arm and Wrist, as well as their child elements like the Palm.
-                            </li>
-                            <li>Slider for <span style="color: #A52A2A;">Wrist (Level 3)</span> specifically affects the Palm.
-                                Transformations at this level only impact the Palm and not higher-level parts.</li>
+
+                <li class="instr-font">
+                    <strong style="font-size: 19px;">🔍 Model Hierarchy and Transformation Instructions</strong>:
+                    <ul style="list-style-type: disc; padding-left: 20px;">
+                        <li><strong>Model Parts and Colors:</strong></li>
+                        <ul style="list-style-type: circle; padding-left: 20px;">
+                            <li><span style="color: blue;">Blue</span>: Represents the Shoulder. This is the highest
+                                level (Level 1) of
+                                the model hierarchy.</li>
+                            <li><span style="color: rgb(199, 140, 31);">Orange</span>: Represents the Arm, which is a
+                                child of the Shoulder.</li>
+                            <li><span style="color: rgb(244, 14, 140);">Pink</span>: Represents the Elbow, also a child
+                                of the Shoulder.</li>
+                            <li><span style="color: rgb(8, 76, 8);">Green</span>: Represents the Fore-arm, a child of
+                                the Elbow.</li>
+                            <li><span style="color: rgb(182, 22, 22);">Brown</span>: Represents the Wrist, another child
+                                of the Elbow.</li>
+                            <li><span style="color: rgb(10, 152, 152);">Cyan</span>: Represents the Palm, which is a
+                                child of the Wrist.</li>
+                        </ul>
+                        <li><strong>Hierarchical Structure:</strong></li>
+                        <ul style="list-style-type: circle; padding-left: 20px;">
+                            <li><strong>Level 1 (Shoulder):</strong> This level contains the Arm and Elbow.</li>
+                            <li><strong>Level 2 (Elbow):</strong> Contains the Fore-arm and Wrist.</li>
+                            <li><strong>Level 3 (Wrist):</strong> Contains the Palm.</li>
+                        </ul>
+                        <li><strong>Transformation and Animation:</strong></li>
+                        <ul style="list-style-type: circle; padding-left: 20px;">
+                            <li>When adjusting sliders:</li>
+                            <ul style="list-style-type: disc; padding-left: 20px;">
+                                <li>Slider for <span style="color: blue;">Shoulder (Level 1)</span> affects all parts of
+                                    the model
+                                    (Levels 1, 2, and 3). Any transformation applied here cascades down to all child
+                                    elements.
+                                    <ul style="list-style-type: circle; padding-left: 20px;">
+
+                                        <li>
+                                            <strong style="color: rgb(31, 12, 176);">Note:</strong> Rotating the shoulder affects the
+                                            entire model. Subsequent translations will
+                                            adjust according to the updated coordinate system after rotation, impacting
+                                            the model's positioning and orientation.
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>Slider for <span style="color: rgb(238, 18, 205);">Elbow (Level 2)</span> affects
+                                    Level 2 and Level 3 parts.
+                                    Transformations here affect the Fore-arm and Wrist, as well as their child elements
+                                    like the Palm.
+                                </li>
+                                <li>Slider for <span style="color: #A52A2A;">Wrist (Level 3)</span> specifically affects
+                                    the Palm.
+                                    Transformations at this level only impact the Palm and not higher-level parts.</li>
+                            </ul>
+                        </ul>
+                        <li><strong>Observing Transformations:</strong></li>
+                        <ul style="list-style-type: circle; padding-left: 20px;">
+                            <li>Understand how hierarchical transformations work: changes at a parent level affect all
+                                child elements,
+                                demonstrating the cascading effect of transformations.</li>
                         </ul>
                     </ul>
-                    <li><strong>Observing Transformations:</strong></li>
-                    <ul style="list-style-type: circle; padding-left: 20px;">
-                        <li>Understand how hierarchical transformations work: changes at a parent level affect all child elements,
-                            demonstrating the cascading effect of transformations.</li>
-                    </ul>
-                </ul>
-            </li>
+                </li>
 
 
                 <li class="instr-font">
-                    <strong style="font-size: 19px;">🎚️ Slider Control</strong>: Adjust translation along the X, Y, and Z axes using
+                    <strong style="font-size: 19px;">🎚️ Slider Control</strong>: Adjust translation along the X, Y, and
+                    Z axes using
                     the sliders.
                     <ul style="list-style-type: disc; padding-left: 20px;">
-                        <li>The sliders at the bottom control <strong>translation</strong> along the X, Y, and Z axes.</li>
+                        <li>The sliders at the bottom control <strong>translation</strong> along the X, Y, and Z axes.
+                        </li>
                     </ul>
                 </li>
 
@@ -165,8 +202,8 @@
     </section>
 
     <main class="columns is-centered is-variable is-1-mobile is-flex is-flex-wrap-wrap workspace">
-        <aside id="left" class="column is-2-desktop is-5-tablet is-5-mobile apparatus" >
-            <div class="v-datalist-container"  style="max-height: 100%; overflow-y: auto;">
+        <aside id="left" class="column is-2-desktop is-5-tablet is-5-mobile apparatus">
+            <div class="v-datalist-container" style="max-height: 100%; overflow-y: auto;">
                 <div class="v-datalist-row">
                     <div class="v-datalist-title">Display Settings</div>
 
@@ -212,17 +249,22 @@
                             name="noofframes" min="1" step="1" value="1000">
                     </div>
 
-                    
+
                 </div>
-                <div class="v-datalist-row" id="top-border">
-                    <label for="quantity" style="font-size: 20px;font-weight: bold;">Translation Vector</label></br>
-                    <span style="font-size: 20px;">x</span>:<input style="width: 25%" class="input is-responsive fields" type="number"
-                        id="x-value" name="x-value" step=".1" value="4">
-                    <span style="font-size: 20px;">y</span>:<input style="width: 25%" class="input is-responsive fields" type="number"
-                        id="y-value" name="y-value" step=".1" value="2">
-                    <span style="font-size: 20px;">z</span>:<input style="width: 25%" class="input is-responsive fields" type="number"
-                        id="z-value" name="z-value" step=".1" value="-3">
-                </div>
+                <div class="v-datalist-title" id="top-border">Translation Vector</div>
+                <form id="translation-form">
+                    <label for="value-x">x</label>
+                    <input type="number" id="value-x" name="value-x" step="0.01" value="2"
+                        class="input is-responsive is-small" style="width: 25%">
+                    <label for="value-y">y</label>
+                    <input type="number" id="value-y" name="value-y" step="0.01" value="1"
+                        class="input is-responsive is-small" style="width: 25%">
+                    <label for="value-z">z</label>
+                    <input type="number" id="value-z" name="value-z" step="0.01" value="0"
+                        class="input is-responsive is-small" style="width: 25%">
+                    <button type="submit" id="apply-translation-btn" class="v-button is-responsive is-small">Apply
+                        Translation</button>
+                </form>
 
                 <!-- Reset Button -->
                 <div style="padding-top: 5px;">
@@ -243,7 +285,7 @@
             </div>
         </div>
 
-        <div id="observations" class="column has-text-centered is-2-desktop is-5-tablet is-5-mobile right" >
+        <div id="observations" class="column has-text-centered is-2-desktop is-5-tablet is-5-mobile right">
             <div class="v-datalist-container" style="max-height: 100%; overflow-y: auto;">
 
                 <!-- Transformation Matrix -->
@@ -292,24 +334,27 @@
                         </div>
                     </div>
                 </div>
-              
+
                 <div class="v-datalist-row is-responsive is-small" style="padding-top: 100px;">
                     <div class="col-md-4"> <!-- Adjust the column size based on your layout needs -->
                         Level 1 (Shoulder)
-                        <input class="v-slider-full is-centered column exptwoslider is-fullwidth" id="shoulder" value="0" type="range">
+                        <input class="v-slider-full is-centered column exptwoslider is-fullwidth" id="shoulder"
+                            value="0" type="range">
                     </div>
                     <div class="col-md-4"> <!-- Adjust the column size based on your layout needs -->
                         Level 2 (Elbow)
-                        <input class="v-slider-full is-centered column exptwoslider is-fullwidth" id="elbow" value="0" type="range">
+                        <input class="v-slider-full is-centered column exptwoslider is-fullwidth" id="elbow" value="0"
+                            type="range">
                     </div>
                     <div class="col-md-4"> <!-- Adjust the column size based on your layout needs -->
                         Level 3 (Wrist)
-                        <input class="v-slider-full is-centered column exptwoslider is-fullwidth" id="wrist" value="0" type="range">
+                        <input class="v-slider-full is-centered column exptwoslider is-fullwidth" id="wrist" value="0"
+                            type="range">
                     </div>
                 </div>
 
 
-                
+
             </div>
         </div>
 

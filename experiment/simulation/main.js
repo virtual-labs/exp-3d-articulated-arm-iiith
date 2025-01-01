@@ -40,13 +40,10 @@ Wrist.addEventListener("input", Level3);
 
 let slider = document.getElementById("slider");
 slider.addEventListener("input", movePoint);
-document.getElementById("slider").max =
-  document.getElementById("x-value").value - initial_pos[0];
+document.getElementById("slider").max =1000
+
 document.getElementById("slider").min = 0;
-slider.step =
-  (document.getElementById("slider").max -
-    document.getElementById("slider").min) /
-  document.getElementById("frames").value;
+slider.step =1
 
 document.getElementById("shoulder").max = frames;
 document.getElementById("shoulder").min = 0;
@@ -419,6 +416,26 @@ document.getElementById("frames").onchange = function () {
   frames = NewFrames;
 };
 
+var transX = parseFloat(document.getElementById("value-x").value);
+var transY = parseFloat(document.getElementById("value-y").value);
+var transZ = parseFloat(document.getElementById("value-z").value);
+function applyTranslation(event) {
+  event.preventDefault(); // Prevent the default form submission
+  transX = parseFloat(document.getElementById("value-x").value);
+  transY = parseFloat(document.getElementById("value-y").value);
+  transZ = parseFloat(document.getElementById("value-z").value);
+
+  // Your translation logic here
+  console.log("Translation applied:", transX, transY, transZ);
+
+  // Optionally, you can remove the event listener after it's triggered once
+  // event.target.removeEventListener("submit", applyTranslation);
+}
+
+
+document.getElementById("translation-form").addEventListener("submit", applyTranslation);
+
+
 let prev_x = 0;
 let prev_y = 0;
 let prev_z = 0;
@@ -428,9 +445,9 @@ function movePoint(e) {
   var target = e.target || e.srcElement;
 
   // Get target values directly from input
-  let tx = parseFloat(document.getElementById("x-value").value);
-  let ty = parseFloat(document.getElementById("y-value").value);
-  let tz = parseFloat(document.getElementById("z-value").value);
+  let tx = transX;
+  let ty = transY;
+  let tz = transZ;
 
   // Calculate translation based on slider value
   let translationScale = target.value / target.max;

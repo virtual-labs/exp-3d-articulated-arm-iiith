@@ -1,4 +1,4 @@
-# Introduction to Hierarchical Structures
+## Introduction to Hierarchical Structures
 
 **Hierarchical structures** are fundamental in computer graphics and animation for organizing objects into levels of control. In such structures, higher-level nodes dictate the transformations and movements of lower-level nodes. This hierarchical organization is akin to a parent-child relationship, where changes at the parent level cascade down to affect the children.
 
@@ -34,7 +34,6 @@ Consider the human body as an analogy:
 - **Fingers and Toes**: Lower-level nodes controlled by the hands and feet, independently articulating without affecting higher-level movements.
 
 Let's Understand through another example-
-
 <div style="border: 2px solid black; padding: 10px; width: fit-content;border-radius:15px;width:80vw;height:auto">
 
 ## Hierarchical Grouping of Objects
