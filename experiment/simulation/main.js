@@ -65,10 +65,6 @@ let ShldAngl = 180,
   ElbwAngl = 90,
   WrstAngl = 90;
 
-let trans_matrix = new THREE.Matrix4();
-trans_matrix.set(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-
-let spanEditModal = document.getElementsByClassName("close")[0];
 let scene,
   PI = 3.141592653589793,
   camera,
@@ -441,7 +437,6 @@ let prev_y = 0;
 let prev_z = 0;
 
 function movePoint(e) {
-    // alert("hello");
   var target = e.target || e.srcElement;
 
   // Get target values directly from input
@@ -455,46 +450,13 @@ function movePoint(e) {
   let curr_y = ty * translationScale - prev_y;
   let curr_z = tz * translationScale - prev_z;
 
-  // Create translation matrix
+  // Update previous values
   prev_x += curr_x;
   prev_y += curr_y;
   prev_z += curr_z;
-  let translate_M = new THREE.Matrix4().makeTranslation(curr_x, curr_y, curr_z);
 
-  // Update dot
-  // dotList[0].geometry.applyMatrix4(translate_M);
-  // if (dotList[0].geometry.isBufferGeometry) {
-  //   dotList[0].geometry.attributes.position.needsUpdate = true;
-  // }
-
-  trans_matrix.multiply(translate_M);
-
-  // Reset transformation matrix if needed
-  if (target.value <= 0) {
-    trans_matrix.set(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  }
-
+  // Move the arm
   moveArm(hand_comp, new THREE.Vector3(curr_x, curr_y, curr_z));
-
-  document.getElementById("matrix-00").value = trans_matrix.elements[0];
-  document.getElementById("matrix-01").value = trans_matrix.elements[1];
-  document.getElementById("matrix-02").value = trans_matrix.elements[2];
-  document.getElementById("matrix-03").value = trans_matrix.elements[12];
-
-  document.getElementById("matrix-10").value = trans_matrix.elements[4];
-  document.getElementById("matrix-11").value = trans_matrix.elements[5];
-  document.getElementById("matrix-12").value = trans_matrix.elements[6];
-  document.getElementById("matrix-13").value = trans_matrix.elements[13];
-
-  document.getElementById("matrix-20").value = trans_matrix.elements[8];
-  document.getElementById("matrix-21").value = trans_matrix.elements[9];
-  document.getElementById("matrix-22").value = trans_matrix.elements[10];
-  document.getElementById("matrix-23").value = trans_matrix.elements[14];
-
-  document.getElementById("matrix-30").value = trans_matrix.elements[3];
-  document.getElementById("matrix-31").value = trans_matrix.elements[7];
-  document.getElementById("matrix-32").value = trans_matrix.elements[11];
-  document.getElementById("matrix-33").value = trans_matrix.elements[15];
 }
 
 function createLabel(text, direction, length) {
@@ -589,7 +551,6 @@ camera.updateProjectionMatrix();
 let init = function () {
   camera.position.set(5, 17, 20); // Set camera position behind and above the origin
 
-//   camera.lookAt(20, 10, 5);
   const light = new THREE.DirectionalLight(0xffffff, 3);
   light.position.set(1, 1, 1).normalize();
   scene.add(light);
@@ -624,12 +585,24 @@ let init = function () {
 
     // Create the arrow helper for the current direction and color
     arrowHelper[i] = new THREE.ArrowHelper(dir[i], origin, length, color);
+    // Add polygon offset to prevent z-fighting
+    if (arrowHelper[i].material) {
+      arrowHelper[i].material.polygonOffset = true;
+      arrowHelper[i].material.polygonOffsetFactor = 1;
+      arrowHelper[i].material.polygonOffsetUnits = 1;
+    }
     scene.add(arrowHelper[i]);
 
     // Create label for each axis and position it at the tip of the arrow
     const label = createLabel(labels[i], dir[i], length);
-    scene.add(label);
+    if (label && label.material) {
+      label.material.polygonOffset = true;
+      label.material.polygonOffsetFactor = 1;
+      label.material.polygonOffsetUnits = 1;
+      scene.add(label);
+    }
   }
+
   let PointGeometry = createArm(
     scene,
     hand_comp,
@@ -640,10 +613,31 @@ let init = function () {
     palm_dim,
     palm_pos
   );
-  renderer = new THREE.WebGLRenderer();
+
+  // Add polygon offset to all arm components
+  hand_comp.forEach(component => {
+    if (component && component.material) {
+      component.material.polygonOffset = true;
+      component.material.polygonOffsetFactor = 1;
+      component.material.polygonOffsetUnits = 1;
+    }
+    // Also check children for materials
+    if (component && component.children) {
+      component.children.forEach(child => {
+        if (child && child.material) {
+          child.material.polygonOffset = true;
+          child.material.polygonOffsetFactor = 1;
+          child.material.polygonOffsetUnits = 1;
+        }
+      });
+    }
+  });
+
+  renderer = new THREE.WebGLRenderer({ antialias: true });
   let w = container.offsetWidth;
   let h = container.offsetHeight;
   renderer.setSize(w, 0.83 * h);
+  renderer.setPixelRatio(window.devicePixelRatio);
   container.appendChild(renderer.domElement);
   orbit = new OrbitControls(camera, renderer.domElement);
   orbit.mouseButtons = {
