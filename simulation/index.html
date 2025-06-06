@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.5-b/css/style.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body class="page" style="margin: 1rem;">
+    <section class="columns is-centered is-flex column">
+        <!-- Instruction Toggle Button -->
+        <div class="v-collapsible-instruction-container">
+            <div class="v-collapsible" id="toggle-instructions"
+                style="cursor: pointer; background: #f1f1f1; padding: 10px; border-radius: 5px;">
+                <strong>Instructions</strong>
+            </div>
+        </div>
+
+        <!-- Fullscreen Instructions Modal -->
+        <div id="procedure-message" class="v-content">
+            <ol>
+                <li class="instr-font"> <strong style="font-size: 19px;">🖱️Mouse Controls</strong>:
+                    <ul style="list-style-type: disc;padding-left: 20px;">
+                        <li><strong>Left Click</strong>: Translate (shift) the simulation by left-clicking and dragging
+                            the cursor.</li>
+                        <li><strong>Right Click</strong>: Rotate the simulation by right-clicking and dragging the
+                            cursor.</li>
+                        <li><strong>Scroll Wheel</strong>: Zoom in and out of the simulation by scrolling.</li>
+                    </ul>
+
+                </li>
+
+                <li class="instr-font">
+                    <strong style="font-size: 19px;">📱Mobile Touch Controls</strong>:
+                    <ul style="list-style-type: disc; padding-left: 20px;">
+                        <li><strong>Pan (Translate)</strong>: Use two fingers on the screen to move the simulation.</li>
+                        <li><strong>Rotate</strong>: Drag finger on the screen to change the orientation of the
+                            simulation.</li>
+                        <li><strong>Zoom</strong>: Pinch two fingers together or spread them apart on the screen to zoom
+                            in or out of the
+                            simulation.</li>
+                    </ul>
+
+                </li>
+
+                <li class="instr-font">
+                    <strong style="font-size: 19px;">🔒Lock Options</strong>:
+                    <ul style="list-style-type: disc;padding-left: 20px;">
+                        <li><strong>Lock Graph</strong>: Prevents translation (shifting) of the simulation when enabled.
+                        </li>
+                        <li><strong>Lock Zoom</strong>: Disables zoom functionality, effectively disabling the middle
+                            mouse button.</li>
+                        <li><strong>Lock Rotate</strong>: Disables the rotation of the simulation, disabling the right
+                            mouse button.</li>
+                    </ul>
+                </li>
+
+
+                <li class="instr-font">
+                    <strong style="font-size: 19px;">🛠️Translation Vector</strong>: Defines how much to move the shape
+                    along the <strong>X</strong>,
+                    <strong>Y</strong>, and <strong>Z</strong> axes in 3D space.
+                    <ul style="list-style-type: disc; padding-left: 20px;">
+                        <li>
+                            <strong style="color:#1976D2">Apply Translation:</strong> Click to apply the specified
+                            translation factors to
+                            the current
+                            shapes.
+
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li class="instr-font">
+                    <strong style="font-size: 19px;">📊 Grid Options</strong>:
+                    <ul style="list-style-type: disc; padding-left: 20px;">
+                        <li>Use the checkboxes to toggle the display of the XY-grid, YZ-grid, and XZ-grid.</li>
+                        <li>Check a box to display the corresponding grid, or uncheck it to remove it from view.</li>
+                    </ul>
+                </li>
+
+                <li class="instr-font">
+                    <strong style="font-size: 19px;">🔍 Transformation Matrix</strong>:
+                    <ul style="list-style-type: disc; padding-left: 20px;">
+                        <li>Monitor the values of the transformation matrix while adjusting the slider.</li>
+                        <li>The transformation matrix multiplies the point's homogeneous coordinates, resulting in new
+                            coordinates for
+                            the translation effect.</li>
+                        <li>Note: This transformation matrix exclusively represents translation and does not include any
+                            rotation
+                            factors.</li>
+                    </ul>
+                </li>
+
+
+                <li class="instr-font">
+                    <strong style="font-size: 19px;">🔍 Model Hierarchy and Transformation Instructions</strong>:
+                    <ul style="list-style-type: disc; padding-left: 20px;">
+                        <li><strong>Model Parts and Colors:</strong></li>
+                        <ul style="list-style-type: circle; padding-left: 20px;">
+                            <li><span style="color: blue;">Blue</span>: Represents the Shoulder. This is the highest
+                                level (Level 1) of
+                                the model hierarchy.</li>
+                            <li><span style="color: rgb(199, 140, 31);">Orange</span>: Represents the Arm, which is a
+                                child of the Shoulder.</li>
+                            <li><span style="color: rgb(244, 14, 140);">Pink</span>: Represents the Elbow, also a child
+                                of the Shoulder.</li>
+                            <li><span style="color: rgb(8, 76, 8);">Green</span>: Represents the Fore-arm, a child of
+                                the Elbow.</li>
+                            <li><span style="color: rgb(182, 22, 22);">Brown</span>: Represents the Wrist, another child
+                                of the Elbow.</li>
+                            <li><span style="color: rgb(10, 152, 152);">Cyan</span>: Represents the Palm, which is a
+                                child of the Wrist.</li>
+                        </ul>
+                        <li><strong>Hierarchical Structure:</strong></li>
+                        <ul style="list-style-type: circle; padding-left: 20px;">
+                            <li><strong>Level 1 (Shoulder):</strong> This level contains the Arm and Elbow.</li>
+                            <li><strong>Level 2 (Elbow):</strong> Contains the Fore-arm and Wrist.</li>
+                            <li><strong>Level 3 (Wrist):</strong> Contains the Palm.</li>
+                        </ul>
+                        <li><strong>Transformation and Animation:</strong></li>
+                        <ul style="list-style-type: circle; padding-left: 20px;">
+                            <li>When adjusting sliders:</li>
+                            <ul style="list-style-type: disc; padding-left: 20px;">
+                                <li>Slider for <span style="color: blue;">Shoulder (Level 1)</span> affects all parts of
+                                    the model
+                                    (Levels 1, 2, and 3). Any transformation applied here cascades down to all child
+                                    elements.
+                                    <ul style="list-style-type: circle; padding-left: 20px;">
+
+                                        <li>
+                                            <strong style="color: rgb(31, 12, 176);">Note:</strong> Rotating the shoulder affects the
+                                            entire model. Subsequent translations will
+                                            adjust according to the updated coordinate system after rotation, impacting
+                                            the model's positioning and orientation.
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>Slider for <span style="color: rgb(238, 18, 205);">Elbow (Level 2)</span> affects
+                                    Level 2 and Level 3 parts.
+                                    Transformations here affect the Fore-arm and Wrist, as well as their child elements
+                                    like the Palm.
+                                </li>
+                                <li>Slider for <span style="color: #A52A2A;">Wrist (Level 3)</span> specifically affects
+                                    the Palm.
+                                    Transformations at this level only impact the Palm and not higher-level parts.</li>
+                            </ul>
+                        </ul>
+                        <li><strong>Observing Transformations:</strong></li>
+                        <ul style="list-style-type: circle; padding-left: 20px;">
+                            <li>Understand how hierarchical transformations work: changes at a parent level affect all
+                                child elements,
+                                demonstrating the cascading effect of transformations.</li>
+                        </ul>
+                    </ul>
+                </li>
+
+
+                <li class="instr-font">
+                    <strong style="font-size: 19px;">🎚️ Slider Control</strong>: Adjust translation along the X, Y, and
+                    Z axes using
+                    the sliders.
+                    <ul style="list-style-type: disc; padding-left: 20px;">
+                        <li>The sliders at the bottom control <strong>translation</strong> along the X, Y, and Z axes.
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li class="instr-font">
+                    <strong style="font-size: 19px;color: #016b2d;">↺ Reset All</strong>: Click the "Reset All" button
+                    to revert all controls
+                    and settings to their default values.
+                </li>
+
+
+
+                <li class="instr-font">
+                    <p>
+                        <strong style="color: #d42811; font-size: 20px;">NOTE:</strong> Make sure the slider is at zero
+                        before making any changes to
+                        for accurate adjustments.
+                    </p>
+                </li>
+
+                <div style="background-color: #f0f0f0; padding: 5px; margin: 10px 0;">
+                    <p style="font-style: italic; text-align: center; margin: 0;">
+                        Note: This experiment simulation is optimized for desktop screens. While basic functionality is
+                        available on
+                        mobile devices, for the best experience, use a desktop or PC monitor.
+                    </p>
+                </div>
+
+
+            </ol>
+        </div>
+    </section>
+
+    <main class="columns is-centered is-variable is-1-mobile is-flex is-flex-wrap-wrap workspace">
+        <aside id="left" class="column is-2-desktop is-5-tablet is-5-mobile apparatus">
+            <div class="v-datalist-container" style="max-height: 100%; overflow-y: auto;">
+                <div class="v-datalist-row">
+                    <div class="v-datalist-title">Display Settings</div>
+
+                    <div id="checkboxes">
+                        <label class="v-checkbox">
+                            <input type="checkbox" id="lock-vertices-cb">
+                            <span class="smol-font"> Lock Graph </span>
+                        </label>
+
+                        <label class="v-checkbox">
+                            <input type="checkbox" id="xy-grid-cb">
+                            <span class="smol-font">XY-Grid </span>
+                        </label>
+
+                        <label class="v-checkbox">
+                            <input type="checkbox" id="lock-zoom-cb">
+                            <span class="smol-font"> Lock Zoom </span>
+                        </label>
+
+                        <label class="v-checkbox">
+                            <input type="checkbox" id="yz-grid-cb">
+                            <span class="smol-font">YZ-Grid </span>
+                        </label>
+
+                        <label class="v-checkbox">
+                            <input type="checkbox" id="lock-rotate-cb">
+                            <span class="smol-font"> Lock Rotate </span>
+                        </label>
+
+                        <label class="v-checkbox">
+                            <input type="checkbox" id="xz-grid-cb">
+                            <span class="smol-font">XZ-Grid </span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="v-datalist-row" id="top-border">
+                    <div class="v-datalist-title">Animation Controls</div>
+
+                    <div style="margin: 1rem">
+                        <label for="quantity" style="margin: 1rem">Frames</label>
+                        <input class="input is-responsive is-small" style="width:40%" type="number" id="frames"
+                            name="noofframes" min="1" step="1" value="1000">
+                    </div>
+
+
+                </div>
+                <div class="v-datalist-title" id="top-border">Translation Vector</div>
+                <form id="translation-form">
+                    <label for="value-x">x</label>
+                    <input type="number" id="value-x" name="value-x" step="0.01" value="2"
+                        class="input is-responsive is-small" style="width: 25%">
+                    <label for="value-y">y</label>
+                    <input type="number" id="value-y" name="value-y" step="0.01" value="1"
+                        class="input is-responsive is-small" style="width: 25%">
+                    <label for="value-z">z</label>
+                    <input type="number" id="value-z" name="value-z" step="0.01" value="0"
+                        class="input is-responsive is-small" style="width: 25%">
+                    <button type="submit" id="apply-translation-btn" class="v-button is-responsive is-small">Apply
+                        Translation</button>
+                </form>
+
+                <!-- Reset Button -->
+                <div style="padding-top: 5px;">
+                    <button type="button" id="reset-all-btn" class="v-button is-responsive is-small">Reset All</button>
+                </div>
+
+            </div>
+        </aside>
+
+
+        <div class="column is-7-desktop is-10-tablet is-10-mobile exp">
+            <div class="v-canvas-container" id="canvas-main">
+
+            </div>
+            <div class="slider-container">
+                <input class="v-slider-full is-centered column exptwoslider centered-slider" id="slider" value="0"
+                    step="1" type="range">
+            </div>
+        </div>
+
+        <div id="observations" class="column has-text-centered is-2-desktop is-5-tablet is-5-mobile right">
+            <div class="v-datalist-container" style="max-height: 100%; overflow-y: auto;">
+
+                <div class="v-datalist-row is-responsive is-small" style="padding-top: 100px;">
+                    <div class="col-md-4"> <!-- Adjust the column size based on your layout needs -->
+                        Level 1 (Shoulder)
+                        <input class="v-slider-full is-centered column exptwoslider is-fullwidth" id="shoulder"
+                            value="0" type="range">
+                    </div>
+                    <div class="col-md-4"> <!-- Adjust the column size based on your layout needs -->
+                        Level 2 (Elbow)
+                        <input class="v-slider-full is-centered column exptwoslider is-fullwidth" id="elbow" value="0"
+                            type="range">
+                    </div>
+                    <div class="col-md-4"> <!-- Adjust the column size based on your layout needs -->
+                        Level 3 (Wrist)
+                        <input class="v-slider-full is-centered column exptwoslider is-fullwidth" id="wrist" value="0"
+                            type="range">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <script type="module" src="main.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
+<script src="../assets/js/iframeResize.js"></script>
+        
+        </body>
+
+</html>
