@@ -1,0 +1,54 @@
+ [
+    {
+      "question": "1. Consider a complex character model with a hierarchical structure. The character has a head, two arms, and two legs, all connected to the main body. If the character performs a complex movement like a cartwheel, how would the hierarchical structure facilitate this animation?",
+      "answers": {
+        "a": "By allowing independent animation of each body part.",
+        "b": "By simplifying the number of joints and bones in the model.",
+        "c": "By ensuring smooth transitions between keyframes.",
+        "d": "By enabling the character to maintain its overall shape during the movement."
+      },
+      "correctAnswer": "a",
+      "explanations": {
+        "a": "Correct! Hierarchical modeling allows for independent animation of each body part. The movement of the arms, legs, and head can be controlled relative to the main body, enabling complex rotations and movements for the cartwheel.",
+        "b": "Simplifying the number of joints and bones is not directly related to hierarchical modeling.",
+        "c": "Ensuring smooth transitions between keyframes is a technique in animation, not a direct benefit of hierarchical modeling itself.",
+        "d": "While maintaining overall shape is a goal, hierarchical modeling primarily enables the complex movements that achieve that shape change."
+      },
+      "difficulty": "hard"
+    },
+    {
+      "question": "2. In a hierarchical modeling system, how would you implement a scenario where a character's hand needs to remain stationary while the rest of the arm moves? ",
+      "answers": {
+        "a": "Create a separate hierarchy for the hand.",
+        "b": "Apply a constraint to the hand object.",
+        "c": "Use inverse kinematics to control the arm movement.",
+        "d": "All of the above."
+      },
+      "correctAnswer": "d",
+      "explanations": {
+        "a": "Creating a separate hierarchy for the hand can give it independent control.",
+        "b": "Constraints can be used to restrict the hand's movement, keeping it fixed.",
+        "c": "Inverse kinematics can control the arm while ensuring the hand's position.",
+        "d": "Correct! All of these techniques can be used to achieve the desired result."
+      },
+      "difficulty": "tricky"
+    },
+    {
+      "question": "3. Imagine a scene with a robot arm. The arm has multiple joints, each with its own degree of freedom. How would you use hierarchical modeling to control the movement of the robot arm and ensure that each joint moves correctly in relation to the others?",
+      "answers": {
+        "a": "Create a linear hierarchy with each joint as a child of the previous joint.",
+        "b": "Create a tree-like hierarchy with the base of the arm as the root and each joint as a branch.",
+        "c": "Use a flat hierarchy with all joints at the same level.",
+        "d": "Create a separate hierarchy for each joint and then combine them."
+      },
+      "correctAnswer": "b",
+      "explanations": {
+        "a": "A linear hierarchy might limit flexibility in certain arm configurations.",
+        "b": "Correct! A tree-like hierarchy accurately reflects the physical relationships between the joints.",
+        "c": "A flat hierarchy would make it difficult to control the relationships between joints.",
+        "d": "While possible, creating separate hierarchies for each joint would be unnecessarily complex."
+      },
+      "difficulty": "hard"
+    }
+  ]
+
